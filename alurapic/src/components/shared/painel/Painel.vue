@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /*Estilo painel*/
  .painel {
     padding: 0 auto;
