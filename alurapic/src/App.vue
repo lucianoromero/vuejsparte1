@@ -3,7 +3,12 @@
     <h1 class="centralizado">{{ titulo }}</h1>
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="foto of fotos" :key="foto.titulo">
-        <img :src="foto.url" :alt="foto.titulo" />
+        <div class="painel">
+          <h2 class="painel-titulo">{{ foto.titulo }}</h2>
+          <div class="painel-conteudo">
+            <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo" />
+          </div>
+        </div>
       </li>
     </ul>
   </div>
@@ -19,7 +24,7 @@ export default {
   },
 
   created() {
-    //Realizando a requisação para API e fazendo o bind para a lista
+    /*Realizando a requisação para API e fazendo o bind para a lista*/
     this.$http
       .get("http://localhost:3000/v1/fotos")
       .then((res) => res.json())
@@ -30,6 +35,7 @@ export default {
   },
 };
 </script>
+
 
 <style>
 .centralizado {
@@ -48,5 +54,33 @@ export default {
 
 .lista-fotos .lista-fotos-item {
   display: inline-block;
+}
+
+/* estilo imagem */
+.imagem-responsiva {
+  width: 100%;
+}
+
+/* estilo do painel */
+
+.painel {
+  padding: 0 auto;
+  border: solid 2px grey;
+  display: inline-block;
+  margin: 5px;
+  box-shadow: 5px 5px 10px grey;
+  width: 200px;
+  height: 100%;
+  vertical-align: top;
+  text-align: center;
+}
+
+.painel .painel-titulo {
+  text-align: center;
+  border: solid 2px;
+  background: lightblue;
+  margin: 0 0 15px 0;
+  padding: 10px;
+  text-transform: uppercase;
 }
 </style>
