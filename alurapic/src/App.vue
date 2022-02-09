@@ -19,7 +19,7 @@
 <script>
 import Painel from "./components/shared/painel/Painel.vue";
 export default {
-  
+
    components: {
     "meu-painel": Painel,
   },
@@ -31,7 +31,7 @@ export default {
       filtro: "",
     };
   },
-
+  //Sempre que tivemos que realizar algum cálculo ou aplicar alguma lógica dinamicamente podemos usar computed property
   computed: {
     fotosComFiltro() {
       if (this.filtro) {
