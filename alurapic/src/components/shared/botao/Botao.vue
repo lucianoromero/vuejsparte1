@@ -5,15 +5,18 @@
 <script>
 export default {
 
-    props: ['tipo', 'rotulo'],
-    
+    props: ['tipo', 'rotulo', 'confirmacao'],
+
     methods: {
 
         disparaAcao() {
-
-            if (confirm('Confirma operacao?')) {
-                this.$emit('botaoAtivado');
+            if (this.confirmacao) {
+                if (confirm('Confirma operacao?')) {
+                    this.$emit('botaoAtivado');
+                }
+                return;
             }
+             this.$emit('botaoAtivado');
         }
     }
 
