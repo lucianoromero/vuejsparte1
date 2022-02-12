@@ -5,7 +5,20 @@
 <script>
 export default {
 
-    props: ['tipo', 'rotulo', 'confirmacao', 'estilo'],
+    props: {
+        tipo: {
+            type: String,
+            required: true
+        },
+
+        rotulo: {
+            type: String,
+            required: true
+        },
+
+        confirmacao: Boolean,
+        estilo: String
+    },
 
     methods: {
 
@@ -16,20 +29,20 @@ export default {
                 }
                 return;
             }
-             this.$emit('botaoAtivado');
+            this.$emit('botaoAtivado');
         }
     },
 
-       computed: {
+    computed: {
 
-       estiloDoBotao() {
+        estiloDoBotao() {
 
-           // se o valor é padrão ou não passou nada para estilo
-           if(this.estilo == 'padrao' || !this.estilo) return 'botao botao-padrao';
+            // se o valor é padrão ou não passou nada para estilo
+            if (this.estilo == 'padrao' || !this.estilo) return 'botao botao-padrao';
 
-           if(this.estilo == 'perigo') return 'botao botao-perigo';
-       }
-   },
+            if (this.estilo == 'perigo') return 'botao botao-perigo';
+        }
+    },
 
 }
 </script>    
