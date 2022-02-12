@@ -2,15 +2,19 @@
   <div>
     <h1 class="centralizado">{{ titulo }}</h1>
 
-    <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="filtre pelo título da foto">
+    <input
+      type="search"
+      class="filtro"
+      v-on:input="filtro = $event.target.value"
+      placeholder="filtre pelo título da foto"
+    />
 
     <ul class="lista-fotos">
-      <li class="lista-fotos-item" v-for="foto of fotosComFiltro" :key="foto.titulo" >
-       
+      <li class="lista-fotos-item" v-for="foto of fotosComFiltro" :key="foto.titulo">
         <meu-painel :titulo="foto.titulo">
-         <!-- <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo" /> -->
-          <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
-          <meu-botao rotulo="remover" tipo="button"/>       
+          <!-- <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo" /> -->
+          <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
+          <meu-botao rotulo="remover" tipo="button" @click.native="remove(foto)" />
         </meu-painel>
  
       </li>
@@ -25,10 +29,20 @@ import Botao from '../shared/botao/Botao.vue';
 
 export default {
 
-   components: {
+  components: {
     "meu-painel": Painel,
     "imagem-responsiva": ImagemResponsiva,
     'meu-botao': Botao,
+  },
+
+  methods: {
+
+    remove(foto) {
+      if (confirm('Confirma?')) {
+        alert('Precisa saber qual foto remover!' + foto.titulo);
+      };
+
+    }
   },
 
   data() {
